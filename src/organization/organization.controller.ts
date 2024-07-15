@@ -8,7 +8,7 @@ import { UpdateOrganizationDto } from './dto/update-organization.dto';
 export class OrganizationController {
   constructor(private readonly organizationService: OrganizationService) {}
 
-  @Get()
+  @Get('/allData')
   async findAll(): Promise<Organization[]> {
     return this.organizationService.findAll();
   }

@@ -1,8 +1,11 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne } from 'typeorm';
 
+/**
+ * Represents an organization position/role.
+ */
 @Entity({ name: 'positions' })
 export class Organization {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn()
   id: string;
 
   @Column()
@@ -11,9 +14,11 @@ export class Organization {
   @Column()
   description: string;
 
+  // Each organization can have one parent
   @ManyToOne(() => Organization, organization => organization.children, {nullable: true}) //nullable
   parent: Organization;
 
-  @OneToMany(() => Organization, organization => organization.parent)
+  // Each organization can have multiple children
+  @OneToMany(() => Organization, organization => organization.parent , {nullable: true})
   children: Organization[];
 }

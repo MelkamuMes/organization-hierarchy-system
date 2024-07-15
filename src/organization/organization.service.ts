@@ -5,6 +5,10 @@ import { Organization } from './organization.entity';
 import { CreateOrganizationDto } from './dto/create-organization.dto';
 import { UpdateOrganizationDto } from './dto/update-organization.dto';
 
+
+/**
+ * Service to handle business logic for Organization entity.
+ */
 @Injectable()
 export class OrganizationService {
   constructor(
@@ -12,6 +16,9 @@ export class OrganizationService {
     private readonly organizationRepository: Repository<Organization>,
   ) {}
 
+    /**
+   * Retrieves all organizations with their children.
+   */
   async findAll(): Promise<Organization[]> {
     return this.organizationRepository.find({ relations: ['children'] });
   }
@@ -19,7 +26,7 @@ export class OrganizationService {
   async findOne(id: string): Promise<Organization> {
     return await this.organizationRepository.findOne({ where: { id }, relations: ['children', 'parent'] });
   }
-
+ 
   async create(createOrganizationDto: CreateOrganizationDto): Promise<Organization> {
     const { name, description, parentId } = createOrganizationDto;
     const organization = new Organization();
@@ -65,4 +72,7 @@ export class OrganizationService {
     // }
     await this.organizationRepository.remove(organization);
   }
+
+
+
 }
