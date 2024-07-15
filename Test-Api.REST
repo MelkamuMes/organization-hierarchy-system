@@ -1,0 +1,30 @@
+POST http://localhost:3333/auth/signup
+
+###
+POST http://localhost:3333/auth/signin
+
+
+###
+
+
+# from dave gray tutorial on nest req & res
+
+GET http://localhost:3333/users/2
+
+###
+
+POST http://localhost:3333/users
+
+
+{
+    "name": "Malik",
+    "email": "malik@malik.codes",
+    "role": "ADMIN"
+}
+
+
+
+###
+
+PATCH  http://localhost:3333/users
+
