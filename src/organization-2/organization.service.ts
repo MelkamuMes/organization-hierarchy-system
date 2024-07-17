@@ -38,6 +38,9 @@ export class OrganizationService {
   /**
    * Creates a new organization.
    */
+
+  //  the createOrganizationDto object. This DTO (Data Transfer Object) typically 
+  // contains validated data received from the client.
   async create(createOrganizationDto: CreateOrganizationDto): Promise<Organization> {
     const organization = new Organization();
     organization.name = createOrganizationDto.name;
@@ -69,7 +72,7 @@ export class OrganizationService {
   async remove(id: number): Promise<void> {
     const organization = await this.findOne(id);
     if (organization.children && organization.children.length > 0) {
-      throw new Error('Cannot delete a parent organization that has children.');
+      throw new Error('You Can not Delete a Parent with Child.');
     }
     await this.organizationRepository.delete(id);
   }
