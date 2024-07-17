@@ -3,7 +3,8 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { join } from 'path';
-import { OrganizationModule } from './organization/organization.module';
+import { OrganizationModule } from './organization-2/organization.module';
+// import { OrganizationModule } from './organization/organization.module';
 
 
 
